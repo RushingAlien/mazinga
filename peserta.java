@@ -1,27 +1,23 @@
 public class peserta {
     String nama;
     CSLL<Integer> jalur = new CSLL<>();
-    String[] polaJalur = new String[4];
+    String[] polaJalur;
+    int Currentx,Currenty;
+    labirin labirin;
 
-    peserta() {
+    peserta(labirin labirin) {
+        labirin = new labirin();
         this.nama = null;
         this.jalur = null;
         this.polaJalur = new String[4];
     }
-
-    void gerak(labirin labirin) {
-        for (String x : polaJalur) {
-            switch (x) {
-                case "ATAS":
-                    break;
-                case "BAWAH":
-                    break;
-                case "KIRI":
-                    break;
-                case "KANAN":
-                default:
-                    break;
-            }
-        }
+    void setPosition(int x,int y) {
+        Currentx = x;
+        Currenty = y;
+        labirin.labirinArray[Currentx][Currenty] = 5;
+        jalur.addLast(labirin.labirinArray[Currentx][Currenty]);
+    }
+    void gerakAtas() {
+        
     }
 }

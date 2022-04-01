@@ -1,24 +1,24 @@
 public class labirin {
-    int ukuran,startx,starty,finishx,finishy;
+    int ukuran;
+    int start[],finish[];
     int labirinArray[][];
+    // -2 = area mulai
+    // -1 = area finish
     // 0 = area bebas
     // 1 = area dilarang
     // 2 = area terlewat
-    // 3 = area mulai
-    // 4 = area finish
-    // 5 = ada orang
+
     labirin() {
-        ukuran = startx = starty = 0;
+        ukuran = start[0] = start[1] = 0;
     }
     boolean isStartExist() {
-        return labirinArray[startx][starty] == 3;
+        return labirinArray[start[0]][start[1]] == 3;
     }
-    labirin(int ukuran, int startx, int starty) {
+    labirin(int ukuran, int x, int y) {
         this.ukuran = ukuran;
-        this.startx = startx;
-        this.starty = starty;
+        setStart(x,y);
         this.labirinArray = new int[ukuran][ukuran];
-        this.labirinArray[this.startx][this.starty] = 3;
+        this.labirinArray[this.start[0]][this.start[1]] = 3;
     }
     public void setUkuran(int ukuran) {
         this.ukuran = ukuran;
@@ -31,25 +31,34 @@ public class labirin {
         this.labirinArray[x][y] = 1;
     }
     public void setStart(int x,int y) {
-        this.startx = x;
-        this.starty = y;
+        this.start[0] = x;
+        this.start[1] = y;
         this.labirinArray[x][y] = 3;
     }
     public int getStartY() {
-        return this.starty;
+        return this.start[1];
     }
     public int getStartX() {
-        return this.startx;
+        return this.start[0];
+    }
+    public int[] getStart() {
+        return this.start;
     }
     public void setFinish(int x,int y) {
-        this.finishx = x;
-        this.finishy = y;
+        this.finish[0] = x;
+        this.finish[1] = y;
         this.labirinArray[x][y] = 3;
     }
     public int getFinishY() {
-        return this.finishy;
+        return this.finish[1];
     }
     public int getFinishX() {
-        return this.finishx;
+        return this.finish[0];
+    }
+    public int valueOf(int x, int y) {
+        return labirinArray[x][y];
+    }
+    void setValue(int x, int y, int value) {
+        this.labirinArray[x][y] = value;
     }
 }

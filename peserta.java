@@ -21,7 +21,10 @@ public class peserta {
     }
 
     boolean isSafe() {
-        return labirin.valueOf(Current[0]-1, Current[1]) < 1 && Current[0]-1 < labirin.getUkuran() && Current[0]-1 >=0 || labirin.valueOf(Current[0]+1, Current[1]) < 1 && Current[0]+1 < labirin.getUkuran() && Current[0]+1 >=0 || labirin.valueOf(Current[0], Current[1]-1) < 1 && Current[1]-1 < labirin.getUkuran() && Current[1]-1 >=0 || labirin.valueOf(Current[0], Current[1]+1) < 1 && Current[1]+1 < labirin.getUkuran() && Current[1]+1 >=0 ;
+        return labirin.valueOf(Current[0]-1, Current[1]) < 1 && Current[0]-1 < labirin.getUkuran() && Current[0]-1 >=0 || 
+        labirin.valueOf(Current[0]+1, Current[1]) < 1 && Current[0]+1 < labirin.getUkuran() && Current[0]+1 >=0 || 
+        labirin.valueOf(Current[0], Current[1]-1) < 1 && Current[1]-1 < labirin.getUkuran() && Current[1]-1 >=0 || 
+        labirin.valueOf(Current[0], Current[1]+1) < 1 && Current[1]+1 < labirin.getUkuran() && Current[1]+1 >=0 ;
     }
 
     void setSafe() {
@@ -32,6 +35,9 @@ public class peserta {
         if (labirin.valueOf(Current[0], Current[1]-1) >= 1) {
             return;
         } else {
+            if (isSafe()) {
+                setSafe();
+            }
             labirin.setValue(Current[0], Current[1], 1);
             Current[1]=Current[1]-1;
             setPosition(Current[0], Current[1]);
